@@ -5,6 +5,9 @@
 //------------------------------------------------------------------------------
 #include <iostream>
 
+// comment to omit debug output
+#define _MYDEBUG
+
 using namespace std;
 
 //------------------------------------------------------------------------------
@@ -39,8 +42,10 @@ int main() {
 	int num_bytes = BOARD_ROWS * BOARD_COLS;
 	memset(cb::ac2d_checkerboard, CH_LITE, num_bytes);
 
+#ifdef _MYDEBUG
 	// display array contents after memset
 	display_2d_array();
+#endif
 
 	// build array of lite and dark squares
 	for (int row = 0; row < BOARD_ROWS; ++row) {
