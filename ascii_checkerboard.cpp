@@ -22,7 +22,7 @@ constexpr char CH_LITE = 'O';
 namespace cb {
 
 	// #TODO will this line init entire array??
-	char a2d_checkerboard[BOARD_ROWS][BOARD_COLS]{ '.' };
+	char ac2d_checkerboard[BOARD_ROWS][BOARD_COLS]{ '.' };
 }
 
 //------------------------------------------------------------------------------
@@ -35,11 +35,9 @@ void display_2d_array();
 //------------------------------------------------------------------------------
 int main() {
 
-	// display initial array contents
-	display_2d_array();
-
 	// set each array element to known value
-	memset(cb::a2d_checkerboard, CH_LITE, BOARD_ROWS * BOARD_COLS);
+	int num_bytes = BOARD_ROWS * BOARD_COLS;
+	memset(cb::ac2d_checkerboard, CH_LITE, num_bytes);
 
 	// display array contents after memset
 	display_2d_array();
@@ -52,7 +50,7 @@ int main() {
 			// row even and col odd OR row odd and col even => DARK
 			//if (row % 2 == 0 && col % 2 == 1 || row % 2 == 1 && col % 2 == 0)
 			if (row % 2 != col % 2)
-				cb::a2d_checkerboard[row][col] = CH_DARK;
+				cb::ac2d_checkerboard[row][col] = CH_DARK;
 		}
 	}
 
@@ -70,7 +68,7 @@ void display_2d_array() {
 
 	for (int row = 0; row < BOARD_ROWS; ++row) {
 		for (int col = 0; col < BOARD_COLS; ++col) {
-			cout << cb::a2d_checkerboard[row][col];
+			cout << cb::ac2d_checkerboard[row][col];
 		}
 		cout << '\n';
 	}
