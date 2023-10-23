@@ -3,7 +3,9 @@
 // 
 // - use 2d array to prepare and display ascii art checkerboard
 //------------------------------------------------------------------------------
+#include "ansi_colors.h"
 #include <iostream>
+#include <sstream>
 
 // comment to omit debug output
 #define _MYDEBUG
@@ -16,8 +18,8 @@ using namespace std;
 constexpr int BOARD_ROWS = 8;
 constexpr int BOARD_COLS = 8;
 
-constexpr char CH_DARK = 'X';
-constexpr char CH_LITE = 'O';
+// make each square 2 chars wide
+const string STR_INVISIBLE = "  ";
 
 //------------------------------------------------------------------------------
 // globals
@@ -25,7 +27,7 @@ constexpr char CH_LITE = 'O';
 namespace cb {
 
 	// #TODO will this line init entire array??
-	char ac2d_checkerboard[BOARD_ROWS][BOARD_COLS]{ '.' };
+	string ac2d_checkerboard[BOARD_ROWS][BOARD_COLS];
 }
 
 //------------------------------------------------------------------------------
@@ -38,9 +40,16 @@ void display_2d_array();
 //------------------------------------------------------------------------------
 int main() {
 
-	// set each array element to known value
-	int num_bytes = BOARD_ROWS * BOARD_COLS;
-	memset(cb::ac2d_checkerboard, CH_LITE, num_bytes);
+	stringstream ss_lite;
+	ss_lite << FG_CYAN << BG_CYAN << STR_INVISIBLE;
+	stringstream ss_dark;
+	ss_dark << FG_RED << BG_RED << STR_INVISIBLE;
+
+	for (int row = 0; row < BOARD_ROWS; row++) {
+		for (int col = 0; col < BOARD_ROWS; col++) {
+			cb::ac2d_checkerboard[row][col] = ss_lite.str();
+		}
+	}
 
 #ifdef _MYDEBUG
 	// display array contents after memset
@@ -55,7 +64,7 @@ int main() {
 			// row even and col odd OR row odd and col even => DARK
 			//if (row % 2 == 0 && col % 2 == 1 || row % 2 == 1 && col % 2 == 0)
 			if (row % 2 != col % 2)
-				cb::ac2d_checkerboard[row][col] = CH_DARK;
+				cb::ac2d_checkerboard[row][col] = ss_dark.str();
 		}
 	}
 
@@ -77,5 +86,5 @@ void display_2d_array() {
 		}
 		cout << '\n';
 	}
-	cout << "\n\n";
+	cout << RESET << "\n\n";
 }
