@@ -43,12 +43,8 @@ void display_2d_array();
 int main() {
 
 	startup();
-
 	prep_2d_array();
-
 	display_2d_array();
-
-	return 0;
 }
 
 //------------------------------------------------------------------------------
