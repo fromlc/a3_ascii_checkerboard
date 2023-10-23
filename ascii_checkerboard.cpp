@@ -4,6 +4,7 @@
 // - use 2d array to prepare and display ascii art checkerboard
 //------------------------------------------------------------------------------
 #include "ansi_colors.h"
+
 #include <iostream>
 #include <sstream>
 
