@@ -6,7 +6,7 @@
 #include <iostream>
 
 // comment to omit debug output
-//#define _MYDEBUG
+//#define _LCDEBUG
 
 using namespace std;
 
@@ -81,7 +81,7 @@ void prep_2d_array() {
 	int num_bytes = BOARD_ROWS * BOARD_COLS;
 	memset(cb::ac2d_checkerboard, cb::lite, num_bytes);
 
-#ifdef _MYDEBUG
+#ifdef _LCDEBUG
 	// display array contents after memset
 	display_2d_array();
 #endif
