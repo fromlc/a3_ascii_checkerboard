@@ -27,7 +27,7 @@ const string STR_INVISIBLE = "  ";
 //------------------------------------------------------------------------------
 namespace cb {
 
-	// #TODO will this line init entire array??
+	// #TODO init not needed, strings begin as ""
 	string ac2d_checkerboard[BOARD_ROWS][BOARD_COLS];
 }
 
